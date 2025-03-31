@@ -1,8 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import Link from "next/link"
-import { useRouter } from "next/navigation"
+import { useNavigate } from "react-router-dom"
 import {
   Button,
   Card,
@@ -46,7 +45,7 @@ const institutionalValues = [
 ]
 
 export default function Reconocimiento() {
-  const router = useRouter()
+  const navigate = useNavigate()
   const [selectedCollaborator, setSelectedCollaborator] = useState("")
   const [selectedValues, setSelectedValues] = useState([])
   const [justification, setJustification] = useState("")
@@ -95,7 +94,7 @@ export default function Reconocimiento() {
 
   const handleConfirm = () => {
     // Here you would make an API call to submit the evaluation
-    router.push("/reconocimiento/exito")
+    navigate("/reconocimiento/exito")
   }
 
   const handleBack = () => {
@@ -205,9 +204,9 @@ export default function Reconocimiento() {
                 </Box>
               </CardContent>
               <CardActions sx={{ p: 3, justifyContent: "space-between" }}>
-                <Link href="/" passHref>
-                  <Button variant="outlined">Cancelar</Button>
-                </Link>
+                <Button variant="outlined" onClick={() => navigate("/")}>
+                  Cancelar
+                </Button>
                 <Button type="submit" variant="contained" disabled={!isFormValid}>
                   Continuar
                 </Button>

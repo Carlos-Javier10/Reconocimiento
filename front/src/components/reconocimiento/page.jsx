@@ -1,9 +1,9 @@
-import { useRouter } from "next/navigation"
+import { useNavigate } from "react-router-dom"
 import { Button, Card, CardContent, CardActions, Typography, Container, Box } from "@mui/material"
 import { CheckCircle as CheckCircleIcon } from "@mui/icons-material"
 
 export default function ReconocimientoExito() {
-  const router = useRouter()
+  const navigate = useNavigate()
 
   return (
     <Container maxWidth="sm" sx={{ py: 4 }}>
@@ -24,10 +24,10 @@ export default function ReconocimientoExito() {
           </Box>
         </CardContent>
         <CardActions sx={{ p: 3, justifyContent: "center", gap: 2 }}>
-          <Button variant="outlined" onClick={() => router.push("/certificados")}>
+          <Button variant="outlined" onClick={() => navigate("/certificados")}>
             Ver Certificados
           </Button>
-          <Button variant="contained" onClick={() => router.push("/")}>
+          <Button variant="contained" onClick={() => navigate("/")}>
             Volver al Inicio
           </Button>
         </CardActions>

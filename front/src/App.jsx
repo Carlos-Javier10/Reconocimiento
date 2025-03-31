@@ -1,4 +1,4 @@
-import React from "react"
+import { Link } from "react-router-dom"
 import { Button, Card, CardContent, CardActions, Typography, Grid, Container, Box } from "@mui/material"
 import {
   FileCopy as CertificateIcon,
@@ -6,7 +6,7 @@ import {
   EmojiEvents as RecognitionIcon,
 } from "@mui/icons-material"
 
-function App() {
+export default function Home() {
   return (
     <Container maxWidth="lg" sx={{ py: 8 }}>
       <Box
@@ -43,9 +43,11 @@ function App() {
                 </Box>
               </CardContent>
               <CardActions>
-                <Button variant="contained" fullWidth href="/certificados">
-                  Ver Certificados
-                </Button>
+                <Link to="/certificados" style={{ width: "100%", textDecoration: "none" }}>
+                  <Button variant="contained" fullWidth>
+                    Ver Certificados
+                  </Button>
+                </Link>
               </CardActions>
             </Card>
           </Grid>
@@ -64,9 +66,11 @@ function App() {
                 </Box>
               </CardContent>
               <CardActions>
-                <Button variant="contained" fullWidth href="/reconocimiento">
-                  Dar Reconocimiento
-                </Button>
+                <Link to="/reconocimiento" style={{ width: "100%", textDecoration: "none" }}>
+                  <Button variant="contained" fullWidth>
+                    Dar Reconocimiento
+                  </Button>
+                </Link>
               </CardActions>
             </Card>
           </Grid>
@@ -85,9 +89,11 @@ function App() {
                 </Box>
               </CardContent>
               <CardActions>
-                <Button variant="contained" fullWidth href="/marketplace">
-                  Ir al Marketplace
-                </Button>
+                <Link to="/marketplace" style={{ width: "100%", textDecoration: "none" }}>
+                  <Button variant="contained" fullWidth>
+                    Ir al Marketplace
+                  </Button>
+                </Link>
               </CardActions>
             </Card>
           </Grid>
@@ -106,5 +112,3 @@ function App() {
     </Container>
   )
 }
-
-export default App
