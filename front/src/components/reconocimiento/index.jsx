@@ -93,8 +93,8 @@ export default function Reconocimiento() {
   }
 
   const handleConfirm = () => {
-    // Here you would make an API call to submit the evaluation
-    navigate("/reconocimiento/exito")
+    // Aquí se asegura que la ruta sea correcta
+    navigate("/reconocimiento/exito"); // Cambia la ruta si es necesario
   }
 
   const handleBack = () => {

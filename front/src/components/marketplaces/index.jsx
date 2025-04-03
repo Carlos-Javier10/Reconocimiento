@@ -51,7 +51,7 @@ const prizes = [
   },
 ]
 
-export default function PrizeDetail({ params }) {
+export default function PrizeDetail({ params = { id: "1" } }) { // Agrega un valor predeterminado para params
   const navigate = useNavigate() // Updated hook
   const [step, setStep] = useState("detail") // "detail" | "confirm" | "success"
 
