@@ -74,7 +74,7 @@ export default function PrizeDetail({ params = { id: "1" } }) { // Agrega un val
     )
   }
 
-  const userPoints = 250 // Mock user points
+  const userPoints = 5000 // Mock user points
   const canRedeem = userPoints >= prize.points
 
   const handleConfirm = () => {
