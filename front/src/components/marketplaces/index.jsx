@@ -1,5 +1,3 @@
-"use client"
-
 import { useState } from "react"
 import { useNavigate } from "react-router-dom" // Updated import
 import { Button, Card, CardContent, CardActions, CardMedia, Typography, Container, Box, Divider } from "@mui/material"

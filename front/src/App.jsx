@@ -5,8 +5,31 @@ import {
   Store as MarketplaceIcon,
   EmojiEvents as RecognitionIcon,
 } from "@mui/icons-material"
+import { Routes, Route } from "react-router-dom"
+import Navbar from './components/navbar/header.jsx'
+import Certificados from "./components/certificados/page.jsx"
+import Reconocimiento from "./components/reconocimiento/index.jsx"
+import MarketplacePage from "./components/marketplaces/page.jsx"
+import ReconocimientoExito from "./components/reconocimiento/page.jsx"
+import PrizeDetail from "./components/marketplaces/index.jsx"
 
 export default function Home() {
+  return (
+    <>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<HomeContent />} />
+        <Route path="/certificados" element={<Certificados />} />
+        <Route path="/reconocimiento" element={<Reconocimiento />} />
+        <Route path="/reconocimiento/exito" element={<ReconocimientoExito />} />
+        <Route path="/marketplace" element={<MarketplacePage />} />
+        <Route path="/marketplace/:id" element={<PrizeDetail />} />
+      </Routes>
+    </>
+  )
+}
+
+function HomeContent() {
   return (
     <Container maxWidth="lg" sx={{ py: 8 }}>
       <Box
@@ -17,97 +40,82 @@ export default function Home() {
           justifyContent: "center",
           minHeight: "80vh",
           gap: 4,
+          textAlign: "center",
         }}
       >
-        <Box sx={{ textAlign: "center", mb: 4 }}>
-          <Typography variant="h3" component="h1" gutterBottom>
-            Bienvenido a ULI Rewards
-          </Typography>
-          <Typography variant="h6" color="text.secondary" sx={{ mb: 4 }}>
-            Recompensa comportamientos institucionales y canjea tus ULIs por premios
-          </Typography>
-        </Box>
+        <Typography variant="h3" component="h1" gutterBottom>
+          Bienvenido a ULI Rewards
+        </Typography>
+        <Typography variant="h6" color="text.secondary">
+          Recompensa comportamientos institucionales y canjea tus ULIs por premios
+        </Typography>
 
-        <Grid container spacing={3} sx={{ maxWidth: "md", width: "100%" }}>
-          <Grid item xs={12} md={4}>
-            <Card sx={{ height: "100%", display: "flex", flexDirection: "column" }}>
-              <CardContent sx={{ flexGrow: 1 }}>
-                <Typography variant="h5" component="h2" gutterBottom>
-                  Mis Certificados
-                </Typography>
-                <Typography variant="body2" color="text.secondary" gutterBottom>
-                  Visualiza y descarga tus certificados de comportamientos
-                </Typography>
-                <Box sx={{ display: "flex", justifyContent: "center", py: 3 }}>
-                  <CertificateIcon sx={{ fontSize: 64, color: "primary.main" }} />
+        <Grid container spacing={3}>
+          {[
+            {
+              title: "Mis Certificados",
+              description: "Visualiza y descarga tus certificados de comportamientos",
+              icon: <CertificateIcon sx={{ fontSize: 64, color: "primary.main" }} />,
+              link: "/certificados",
+              buttonText: "Ver Certificados",
+            },
+            {
+              title: "Reconocimiento",
+              description: "Evalúa valores institucionales de tus colaboradores",
+              icon: <RecognitionIcon sx={{ fontSize: 64, color: "primary.main" }} />,
+              link: "/reconocimiento",
+              buttonText: "Dar Reconocimiento",
+            },
+            {
+              title: "Marketplace",
+              description: "Canjea tus ULIs por premios exclusivos",
+              icon: <MarketplaceIcon sx={{ fontSize: 64, color: "primary.main" }} />,
+              link: "/marketplace",
+              buttonText: "Ir al Marketplace",
+            },
+          ].map((item, index) => (
+            <Grid item xs={12} sm={6} md={4} key={index} sx={{ mb: { xs: 3, sm: 0 } }}>
+              <Box
+                sx={{
+                  border: "1px solid",
+                  borderColor: "divider",
+                  borderRadius: 2,
+                  p: 3,
+                  textAlign: "center",
+                  height: "100%",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "space-between",
+                  width: 300, // Añadido para un tamaño horizontal consistente
+                  mx: "auto", // Centrar horizontalmente
+                }}
+              >
+                <Box>
+                  <Typography variant="h5" component="h2" gutterBottom>
+                    {item.title}
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary" gutterBottom>
+                    {item.description}
+                  </Typography>
+                  <Box sx={{ py: 3 }}>{item.icon}</Box>
                 </Box>
-              </CardContent>
-              <CardActions>
-                <Link to="/certificados" style={{ width: "100%", textDecoration: "none" }}>
+                <Link to={item.link} style={{ textDecoration: "none" }}>
                   <Button variant="contained" fullWidth>
-                    Ver Certificados
+                    {item.buttonText}
                   </Button>
                 </Link>
-              </CardActions>
-            </Card>
-          </Grid>
-
-          <Grid item xs={12} md={4}>
-            <Card sx={{ height: "100%", display: "flex", flexDirection: "column" }}>
-              <CardContent sx={{ flexGrow: 1 }}>
-                <Typography variant="h5" component="h2" gutterBottom>
-                  Reconocimiento
-                </Typography>
-                <Typography variant="body2" color="text.secondary" gutterBottom>
-                  Evalúa valores institucionales de tus colaboradores
-                </Typography>
-                <Box sx={{ display: "flex", justifyContent: "center", py: 3 }}>
-                  <RecognitionIcon sx={{ fontSize: 64, color: "primary.main" }} />
-                </Box>
-              </CardContent>
-              <CardActions>
-                <Link to="/reconocimiento" style={{ width: "100%", textDecoration: "none" }}>
-                  <Button variant="contained" fullWidth>
-                    Dar Reconocimiento
-                  </Button>
-                </Link>
-              </CardActions>
-            </Card>
-          </Grid>
-
-          <Grid item xs={12} md={4}>
-            <Card sx={{ height: "100%", display: "flex", flexDirection: "column" }}>
-              <CardContent sx={{ flexGrow: 1 }}>
-                <Typography variant="h5" component="h2" gutterBottom>
-                  Marketplace
-                </Typography>
-                <Typography variant="body2" color="text.secondary" gutterBottom>
-                  Canjea tus ULIs por premios exclusivos
-                </Typography>
-                <Box sx={{ display: "flex", justifyContent: "center", py: 3 }}>
-                  <MarketplaceIcon sx={{ fontSize: 64, color: "primary.main" }} />
-                </Box>
-              </CardContent>
-              <CardActions>
-                <Link to="/marketplace" style={{ width: "100%", textDecoration: "none" }}>
-                  <Button variant="contained" fullWidth>
-                    Ir al Marketplace
-                  </Button>
-                </Link>
-              </CardActions>
-            </Card>
-          </Grid>
+              </Box>
+            </Grid>
+          ))}
         </Grid>
 
-        <Box sx={{ mt: 4, textAlign: "center" }}>
-          <Typography variant="body1" color="text.secondary">
-            Tienes{" "}
-            <Box component="span" sx={{ fontWeight: "bold", color: "primary.main" }}>
-              250 ULIs
-            </Box>{" "}
-            disponibles
-          </Typography>
-        </Box>
+        <Typography variant="body1" color="text.secondary" sx={{ mt: 4 }}>
+          Tienes{" "}
+          <Box component="span" sx={{ fontWeight: "bold", color: "primary.main" }}>
+            250 ULIs
+          </Box>{" "}
+          disponibles
+        </Typography>
       </Box>
     </Container>
   )

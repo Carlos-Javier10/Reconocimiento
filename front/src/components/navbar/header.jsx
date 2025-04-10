@@ -1,4 +1,3 @@
-"use client"
 import { Link, useLocation, useNavigate } from "react-router-dom"
 import { AppBar, Toolbar, Typography, IconButton, Box } from "@mui/material"
 import { Home as HomeIcon, ArrowBack as ArrowBackIcon } from "@mui/icons-material"
